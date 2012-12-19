@@ -1,0 +1,9 @@
+local url = "https://raw.github.com/stevenlr/CC/master/"
+local tArgs = {...}
+
+prog = tArgs[1]
+
+content = http.get(url..prog)
+h = fs.open("programs/"..prog, "w")
+h.write(content.readAll())
+h.close()
