@@ -4,7 +4,7 @@ local saplings = 2
 local bonemeal = 3
 
 function refuel()
-	if turtle.getFuelLevel() < 8 then
+	if turtle.getFuelLevel() < 20 then
 		if turtle.getItemCount(coal) <= 1 then
 			return false
 		else
