@@ -1,0 +1,66 @@
+local run = true
+local coal = 1
+local saplings = 2
+local bonemeal = 3
+
+function refuel()
+	if turtle.getFuelLevel() < 8 then
+		if turtle.getItemCount(coal) <= 1 then
+			return false
+		else
+			turtle.select(coal)
+			turtle.refuel(1)
+		end
+	end
+
+	return true
+end
+
+-----------
+
+while run do
+	if not refuel() then
+		run = false
+	end
+
+	------------------
+
+	turtle.select(sapling)
+	turtle.place()
+	turtle.select(bonemeal)
+	turtle.place()
+
+	turtle.dig()
+	turtle.forward()
+
+	while turtle.detectUp() do
+		turtle.digUp()
+		turtle.up()
+	end
+
+	while not turtle.detectDown() do
+		turtle.down()
+	end
+
+	turtle.turnRight()
+	turtle.turnRight()
+
+	turtle.forward()
+
+	turtle.turnRight()
+	turtle.turnRight()
+
+	------------------
+
+	if not refuel() then
+		run = false
+	end
+
+	if turtle.getItemCount(saplings) <= 1 then
+		run = false
+	end
+
+	if turtle.getItemCount(bonemeal) <= 1 then
+		run = false
+	end
+end
