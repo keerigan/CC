@@ -16,7 +16,7 @@ function refuel()
 	return true
 end
 
------------
+----------------
 
 while run do
 	if not refuel() then
@@ -25,7 +25,7 @@ while run do
 
 	------------------
 
-	turtle.select(sapling)
+	turtle.select(saplings)
 	turtle.place()
 	turtle.select(bonemeal)
 	turtle.place()
